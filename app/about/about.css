@@ -1,0 +1,40 @@
+.goal-section {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.goal-section h2 {
+  font-family: "Archivo", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.goal-section p {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .goal-section {
+    padding: 16px;
+  }
+
+  .goal-section h2 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    margin-bottom: 12px;
+  }
+
+  .goal-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
