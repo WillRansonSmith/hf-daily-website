@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 const phrases = [
   "One simple routine.",
   "Track symptoms.",
-  "Understand recent patterns.",
+  "Understand patterns.",
 ];
 
 export default function Hero() {
@@ -61,7 +61,7 @@ export default function Hero() {
 
       <div className="hf-buttons">
         <a href="/about" className="hf-btn">
-          Learn More
+          How it Works
         </a>
         <a href="/beta" className="hf-btn">
           Join Beta

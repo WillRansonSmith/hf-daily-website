@@ -17,7 +17,7 @@ export default function Header() {
 
       <nav className="hf-header-nav">
         <Link href="/about" className="hf-header-link">
-          Learn More
+          How it Works
         </Link>
         <Link href="/beta" className="hf-header-link">
           Join Beta
