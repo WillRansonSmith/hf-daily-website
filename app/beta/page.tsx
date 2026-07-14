@@ -10,8 +10,6 @@ export default function BetaPage() {
   return (
     <main className="beta-page">
       <div className="beta-section">
-        <h2>Beta testing</h2>
-
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSfJ9nACndQX_Dia5oPuSxbYb3OcyzUBB2O6M259FWNyPSTlcw/viewform?embedded=true"
           width="640"

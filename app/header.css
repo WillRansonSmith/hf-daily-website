@@ -83,6 +83,24 @@
   opacity: 1;
 }
 
+.hf-header-link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hf-header-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .hf-header-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --hf-header-height: 52px;

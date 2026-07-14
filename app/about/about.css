@@ -56,8 +56,8 @@ body:has(.about-page) .hf-footer {
   margin: 0;
   font-family: "Archivo", sans-serif;
   font-weight: 600;
-  font-size: clamp(1.6rem, 3vw, 2.15rem);
-  line-height: 1.15;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: normal;
   color: #ffffff;
 }
 
@@ -157,6 +157,17 @@ body:has(.about-page) .hf-footer {
   }
 }
 
+@media (min-width: 1100px) {
+  .how-screenshot-image {
+    transform: translateY(-16px) scale(1.2);
+    transform-origin: center;
+  }
+
+  .how-disclaimer {
+    margin-top: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .about-page {
     height: auto;
@@ -172,7 +183,7 @@ body:has(.about-page) .hf-footer {
   }
 
   .how-it-works {
-    padding: 12px 16px max(16px, env(safe-area-inset-bottom));
+    padding: 20px 16px max(24px, env(safe-area-inset-bottom));
     align-items: flex-start;
   }
 
@@ -184,12 +195,18 @@ body:has(.about-page) .hf-footer {
       "heading"
       "steps"
       "screenshot";
-    row-gap: 10px;
+    row-gap: 18px;
     column-gap: 0;
   }
 
   .how-heading {
-    font-size: 1.45rem;
+    font-size: 1.75rem;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .step-list {
+    gap: 14px;
   }
 
   .how-screenshot {
@@ -199,11 +216,11 @@ body:has(.about-page) .hf-footer {
   .how-screenshot-image {
     /* Width-driven on mobile so the mockup is readable without overflowing. */
     height: auto;
-    width: min(68vw, 260px);
+    width: min(82vw, 312px);
   }
 
   .step-card {
-    padding: 8px 12px;
+    padding: 10px 12px;
     border-radius: 10px;
   }
 
@@ -223,7 +240,7 @@ body:has(.about-page) .hf-footer {
   }
 
   .how-disclaimer {
-    margin-top: 8px;
+    margin-top: 18px;
     padding-top: 7px;
   }
 
@@ -302,10 +319,7 @@ body:has(.about-page) .hf-footer {
 
 @media (max-width: 768px) and (max-height: 720px) {
   .how-main-row {
-    row-gap: 8px;
+    row-gap: 14px;
   }
 
-  .how-heading {
-    font-size: 1.3rem;
-  }
 }

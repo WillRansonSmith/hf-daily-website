@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .beta-section {
@@ -12,15 +12,6 @@
   margin: 0 auto;
   padding: 40px 24px 80px;
   box-sizing: border-box;
-}
-
-.beta-section h2 {
-  font-family: "Archivo", sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: #ffffff;
-  text-align: center;
-  margin: 0 0 32px;
 }
 
 .beta-form {
@@ -32,8 +23,14 @@
   margin: 0 auto;
 }
 
+@media (min-width: 769px) {
+  .beta-section {
+    padding: 10px 24px 80px;
+  }
+}
+
 @media (max-width: 768px) {
   .beta-section {
-    padding: 32px 20px 64px;
+    padding: 20px 20px 64px;
   }
 }

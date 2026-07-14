@@ -160,6 +160,19 @@ body:has(.page-fit-viewport) {
   transform: translateY(-2px);
 }
 
+.hf-btn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hf-btn:hover {
+    background: #dceff0;
+    border-color: #dceff0;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+  }
+}
+
 @media (max-width: 768px) {
   /* Mobile hero stays vertically centered (no extra downward bias). */
   .page-fit-viewport .hf-hero-wrapper {
@@ -237,5 +250,30 @@ body:has(.page-fit-viewport) {
 
   .home-page .hf-subtitle {
     margin: 0 auto;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1099px) and (min-height: 700px) {
+  .home-page.page-fit-viewport .hf-hero-wrapper {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    justify-content: stretch;
+    justify-items: center;
+    row-gap: clamp(44px, 6svh, 72px);
+    padding: clamp(24px, 5svh, 56px) 0;
+  }
+
+  .home-page .hf-subtitle {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1099px) and (orientation: portrait) and (min-height: 900px) {
+  .home-page.page-fit-viewport .hf-hero-wrapper {
+    /* Let the three hero groups occupy more of a tall tablet viewport without
+       introducing uncapped space-between gaps on unusually tall screens. */
+    row-gap: clamp(84px, 10svh, 136px);
+    padding-block: clamp(32px, 5svh, 64px);
   }
 }

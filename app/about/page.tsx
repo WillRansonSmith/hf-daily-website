@@ -51,7 +51,7 @@ export default function AboutPage() {
                 alt="HF Daily app screenshot"
                 width={1132}
                 height={1762}
-                sizes="(max-width: 768px) 68vw, (max-width: 900px) 280px, 360px"
+                sizes="(max-width: 768px) 82vw, (max-width: 900px) 280px, 432px"
                 className="how-screenshot-image"
                 loading="eager"
                 unoptimized
