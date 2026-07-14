@@ -61,10 +61,10 @@ export default function Hero() {
 
       <div className="hf-buttons">
         <a href="/about" className="hf-btn">
-          How it Works
+          How it works
         </a>
         <a href="/beta" className="hf-btn">
-          Join Beta
+          Join beta
         </a>
       </div>
     </div>

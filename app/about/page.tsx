@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./about.css";
 
 export const metadata: Metadata = {
-  title: "How it Works | HF Daily",
+  title: "How it works | HF Daily",
   description:
     "See how HF Daily’s daily check-in works — from setup to your recommended next step.",
 };
@@ -32,6 +32,8 @@ export default function AboutPage() {
       <div className="how-it-works">
         <section className="how-layout" aria-label="How HF Daily works">
           <div className="how-main-row">
+            <h1 className="how-heading">How it works</h1>
+
             <ol className="step-list">
               {steps.map((step, index) => (
                 <li key={step.title} className="step-card">

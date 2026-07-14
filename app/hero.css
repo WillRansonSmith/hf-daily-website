@@ -40,6 +40,13 @@ body:has(.page-fit-viewport) {
   justify-content: center;
 }
 
+/* Bias the centered hero group a touch below dead-center. A fixed offset stays
+   subtle on tall desktop monitors (still reads as centered) but is proportionally
+   more noticeable on shorter laptop screens, giving a more balanced vertical feel. */
+.page-fit-viewport .hf-hero-wrapper {
+  padding-top: 2rem;
+}
+
 .about-page {
   flex: 1;
   width: 100%;
@@ -75,8 +82,9 @@ body:has(.page-fit-viewport) {
   font-size: clamp(2.98rem, 5.95vw, 5.1rem);
   line-height: 1.1;
   color: #fff;
-  /* Nudge only the headline block up; subtitle/buttons stay put. */
-  transform: translateY(-5vh);
+  /* Headline sits in normal flow with the rest of the group; the whole hero is
+     balanced/centered by .hf-hero-wrapper (no per-element upward nudge). */
+  transform: none;
 }
 
 .hf-hero .static {
@@ -105,8 +113,9 @@ body:has(.page-fit-viewport) {
 
 .hf-subtitle {
   max-width: 920px;
-  /* Equal visual space above/below, accounting for the heading's -5vh nudge. */
-  margin: calc(34px - 2.5vh) auto calc(34px + 2.5vh);
+  /* Equal breathing room above (to the headline) and below (to the buttons); a bit
+     more open than before so the subtitle isn't bunched. Both gaps are this margin. */
+  margin: 50px auto;
   padding: 0 20px;
   color: #f5f5f5;
   font-family: "Nunito", sans-serif;
@@ -152,6 +161,11 @@ body:has(.page-fit-viewport) {
 }
 
 @media (max-width: 768px) {
+  /* Mobile hero stays vertically centered (no extra downward bias). */
+  .page-fit-viewport .hf-hero-wrapper {
+    padding-top: 0;
+  }
+
   .hf-hero {
     font-size: clamp(1.85rem, 9vw, 2.35rem);
     padding: 0 16px;
@@ -162,7 +176,7 @@ body:has(.page-fit-viewport) {
   }
 
   .hf-subtitle {
-    margin: calc(14px - 2.5vh) auto calc(14px + 2.5vh);
+    margin: 20px auto;
     font-size: 0.9rem;
     line-height: 1.45;
     padding: 0 16px;

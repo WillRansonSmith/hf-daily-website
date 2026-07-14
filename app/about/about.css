@@ -39,18 +39,41 @@ body:has(.about-page) .hf-footer {
 
 .how-main-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 402px);
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 300px);
+  /* Heading in the top auto row, the step stack in the second auto row (its
+     natural height — NOT stretched). The mockup spans both rows and is height-
+     matched to this natural content (see .how-screenshot-frame), so the columns
+     align without stretching the gaps between cards. */
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "heading screenshot"
+    "steps   screenshot";
+  column-gap: 48px;
+  row-gap: clamp(10px, 1.8vh, 18px);
+  align-items: stretch;
+}
+
+.how-heading {
+  grid-area: heading;
+  margin: 0;
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  line-height: 1.15;
+  color: #ffffff;
 }
 
 .step-list {
+  grid-area: steps;
   list-style: none;
   margin: 0;
   padding: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1.6vh, 14px);
+  /* Cards flow naturally under the heading with compact, fixed gaps — no stretched
+     distribution. The mockup is height-matched to this stack, so the gaps stay tight. */
+  gap: clamp(10px, 1.8vh, 16px);
 }
 
 .step-card {
@@ -111,19 +134,24 @@ body:has(.about-page) .hf-footer {
 }
 
 .how-screenshot {
+  grid-area: screenshot;
   width: 100%;
   justify-self: center;
-  align-self: center;
+  align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .how-screenshot-frame {
-  width: min(100%, clamp(240px, calc((100dvh - var(--hf-header-height, 80px) - 112px) * 402 / 874), 402px));
-  margin: 0 auto;
+  /* Height-driven and sized to roughly match the natural left-column height, so the
+     phone mockup no longer towers over the four cards (which forced big gaps). Width
+     follows the phone aspect ratio. */
+  height: clamp(380px, calc(100dvh - var(--hf-header-height, 80px) - 190px), 520px);
+  width: auto;
+  max-width: 100%;
   aspect-ratio: 402 / 874;
-  border-radius: 36px;
+  border-radius: 32px;
   border: 1px dashed rgba(255, 255, 255, 0.35);
   background: rgba(0, 0, 0, 0.18);
   display: flex;
@@ -140,13 +168,13 @@ body:has(.about-page) .hf-footer {
 
 @media (max-width: 900px) {
   .how-main-row {
-    grid-template-columns: minmax(0, 1fr) minmax(200px, 320px);
-    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) minmax(170px, 240px);
+    column-gap: 28px;
   }
 
   .how-screenshot-frame {
-    width: min(100%, clamp(180px, calc((100dvh - var(--hf-header-height, 80px) - 108px) * 402 / 874), 320px));
-    border-radius: 30px;
+    height: clamp(340px, calc(100dvh - var(--hf-header-height, 80px) - 190px), 460px);
+    border-radius: 28px;
   }
 }
 
@@ -162,14 +190,27 @@ body:has(.about-page) .hf-footer {
 
   .how-main-row {
     grid-template-columns: 1fr;
-    gap: 10px;
+    /* Single column: heading, then the steps, then the mockup below. */
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "heading"
+      "steps"
+      "screenshot";
+    row-gap: 10px;
+    column-gap: 0;
+  }
+
+  .how-heading {
+    font-size: 1.45rem;
   }
 
   .how-screenshot {
-    order: -1;
+    align-self: center;
   }
 
   .how-screenshot-frame {
+    /* Revert to width-driven on mobile (base rule sets an explicit height). */
+    height: auto;
     width: min(100%, clamp(88px, calc((100dvh - var(--hf-header-height, 52px) - 520px) * 402 / 874), 124px));
     border-radius: 18px;
   }
@@ -211,6 +252,10 @@ body:has(.about-page) .hf-footer {
 }
 
 @media (max-height: 720px) and (min-width: 769px) {
+  .how-heading {
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  }
+
   .step-card {
     padding: 10px 14px;
   }
@@ -270,7 +315,11 @@ body:has(.about-page) .hf-footer {
 
 @media (max-width: 768px) and (max-height: 720px) {
   .how-main-row {
-    gap: 0;
+    row-gap: 8px;
+  }
+
+  .how-heading {
+    font-size: 1.3rem;
   }
 
   .how-screenshot {

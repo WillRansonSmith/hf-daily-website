@@ -16,11 +16,14 @@ export default function Header() {
       </Link>
 
       <nav className="hf-header-nav">
+        <Link href="/" className="hf-header-link">
+          Home
+        </Link>
         <Link href="/about" className="hf-header-link">
-          How it Works
+          How it works
         </Link>
         <Link href="/beta" className="hf-header-link">
-          Join Beta
+          Join beta
         </Link>
       </nav>
     </header>

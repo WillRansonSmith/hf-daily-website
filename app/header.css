@@ -6,7 +6,10 @@
   z-index: 100;
   width: 100%;
   max-width: 100%;
-  padding: 20px 24px;
+  /* More horizontal breathing room so the logo and nav no longer hug the edges,
+     plus a touch more top/bottom so they sit slightly lower. Keep in sync with
+     --hf-header-height below (22 + 40px logo + 22 = 84). */
+  padding: 22px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,7 +18,7 @@
 }
 
 :root {
-  --hf-header-height: 80px;
+  --hf-header-height: 84px;
 }
 
 .hf-header-logo {
@@ -34,7 +37,9 @@
 .hf-header-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  /* Single consistent gap for the whole nav group — even spacing between
+     Home / How it works / Join beta, no per-link margins. */
+  gap: 28px;
 }
 
 .hf-header-link {
@@ -56,20 +61,41 @@
   }
 
   .hf-header {
-    padding: 12px 16px;
+    /* 14 + 24px logo + 14 = 52, matching the height var above. */
+    padding: 14px 16px;
   }
 
   .hf-header-logo-image {
-    height: 28px;
+    height: 24px;
   }
 
   .hf-header-link {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     white-space: nowrap;
   }
 
   .hf-header-nav {
-    gap: 8px;
+    gap: 10px;
     flex-shrink: 0;
+  }
+}
+
+/* Very narrow phones: shrink the wordmark and nav a touch more so the three
+   links plus logo never overflow (no horizontal scroll). */
+@media (max-width: 360px) {
+  .hf-header {
+    padding: 14px 12px;
+  }
+
+  .hf-header-logo-image {
+    height: 22px;
+  }
+
+  .hf-header-link {
+    font-size: 0.68rem;
+  }
+
+  .hf-header-nav {
+    gap: 8px;
   }
 }
