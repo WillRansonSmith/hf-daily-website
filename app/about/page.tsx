@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import "./about.css";
 
 export const metadata: Metadata = {
@@ -44,10 +45,17 @@ export default function AboutPage() {
               ))}
             </ol>
 
-            <div className="how-screenshot" aria-hidden="true">
-              <div className="how-screenshot-frame">
-                <span className="how-screenshot-label">App screenshot</span>
-              </div>
+            <div className="how-screenshot">
+              <Image
+                src="/iphone-17-pro-mockup.svg"
+                alt="HF Daily app screenshot"
+                width={1132}
+                height={1762}
+                sizes="(max-width: 768px) 68vw, (max-width: 900px) 280px, 360px"
+                className="how-screenshot-image"
+                loading="eager"
+                unoptimized
+              />
             </div>
           </div>
 

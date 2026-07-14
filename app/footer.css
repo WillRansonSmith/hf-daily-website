@@ -36,3 +36,19 @@
     gap: 6px;
   }
 }
+
+@media (max-width: 600px) {
+  body:has(.home-page) .hf-footer {
+    padding: 10px 16px max(16px, env(safe-area-inset-bottom));
+  }
+
+  body:has(.home-page) .hf-footer-inner {
+    gap: 4px;
+  }
+
+  body:has(.home-page) .hf-footer-link {
+    font-size: 0.78rem;
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.72);
+  }
+}

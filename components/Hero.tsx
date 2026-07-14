@@ -6,6 +6,8 @@ const phrases = [
   "One simple routine.",
   "Track symptoms.",
   "Understand patterns.",
+  "Know when to speak up.",
+  "Take ownership.",
 ];
 
 export default function Hero() {

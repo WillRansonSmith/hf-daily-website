@@ -1,7 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "How it works" },
+  { href: "/beta", label: "Join beta" },
+] as const;
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="hf-header">
       <Link href="/" className="hf-header-logo" aria-label="HF Daily home">
@@ -16,15 +27,20 @@ export default function Header() {
       </Link>
 
       <nav className="hf-header-nav">
-        <Link href="/" className="hf-header-link">
-          Home
-        </Link>
-        <Link href="/about" className="hf-header-link">
-          How it works
-        </Link>
-        <Link href="/beta" className="hf-header-link">
-          Join beta
-        </Link>
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href;
+
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`hf-header-link${isActive ? " hf-header-link-active" : ""}`}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
     </header>
   );

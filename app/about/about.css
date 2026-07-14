@@ -18,16 +18,16 @@ body:has(.about-page) .hf-footer {
 }
 
 .how-it-works {
-  max-width: 1120px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: clamp(10px, 2vh, 20px) 24px;
+  padding: clamp(24px, 4vh, 36px) 24px 20px;
   box-sizing: border-box;
   flex: 1;
   height: 100%;
   min-height: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .how-layout {
@@ -39,14 +39,12 @@ body:has(.about-page) .hf-footer {
 
 .how-main-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(200px, 300px);
-  /* Heading in the top auto row, the step stack in the second auto row (its
-     natural height — NOT stretched). The mockup spans both rows and is height-
-     matched to this natural content (see .how-screenshot-frame), so the columns
-     align without stretching the gaps between cards. */
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  /* The phone shares the natural card-stack row, so both columns align without
+     stretching the compact gaps between cards. */
   grid-template-rows: auto auto;
   grid-template-areas:
-    "heading screenshot"
+    "heading ."
     "steps   screenshot";
   column-gap: 48px;
   row-gap: clamp(10px, 1.8vh, 18px);
@@ -139,48 +137,38 @@ body:has(.about-page) .hf-footer {
   justify-self: center;
   align-self: stretch;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
-.how-screenshot-frame {
-  /* Height-driven and sized to roughly match the natural left-column height, so the
-     phone mockup no longer towers over the four cards (which forced big gaps). Width
-     follows the phone aspect ratio. */
-  height: clamp(380px, calc(100dvh - var(--hf-header-height, 80px) - 190px), 520px);
+.how-screenshot-image {
+  /* The intrinsic SVG dimensions preserve the mockup's aspect ratio. */
+  display: block;
+  height: 100%;
   width: auto;
   max-width: 100%;
-  aspect-ratio: 402 / 874;
-  border-radius: 32px;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  background: rgba(0, 0, 0, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.how-screenshot-label {
-  font-family: "Nunito", sans-serif;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.45);
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
   .how-main-row {
-    grid-template-columns: minmax(0, 1fr) minmax(170px, 240px);
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 280px);
     column-gap: 28px;
-  }
-
-  .how-screenshot-frame {
-    height: clamp(340px, calc(100dvh - var(--hf-header-height, 80px) - 190px), 460px);
-    border-radius: 28px;
   }
 }
 
 @media (max-width: 768px) {
   .about-page {
-    height: calc(100dvh - var(--hf-header-height, 52px));
+    height: auto;
+    min-height: calc(100dvh - var(--hf-header-height, 52px));
+    overflow: visible;
+  }
+
+  body:has(.about-page) {
+    height: auto;
+    max-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .how-it-works {
@@ -208,11 +196,10 @@ body:has(.about-page) .hf-footer {
     align-self: center;
   }
 
-  .how-screenshot-frame {
-    /* Revert to width-driven on mobile (base rule sets an explicit height). */
+  .how-screenshot-image {
+    /* Width-driven on mobile so the mockup is readable without overflowing. */
     height: auto;
-    width: min(100%, clamp(88px, calc((100dvh - var(--hf-header-height, 52px) - 520px) * 402 / 874), 124px));
-    border-radius: 18px;
+    width: min(68vw, 260px);
   }
 
   .step-card {
@@ -320,9 +307,5 @@ body:has(.about-page) .hf-footer {
 
   .how-heading {
     font-size: 1.3rem;
-  }
-
-  .how-screenshot {
-    display: none;
   }
 }

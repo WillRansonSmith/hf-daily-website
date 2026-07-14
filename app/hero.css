@@ -172,11 +172,16 @@ body:has(.page-fit-viewport) {
   }
 
   #animatedText {
-    white-space: normal;
+    font-size: clamp(1.6rem, 7.5vw, 2rem);
+    white-space: nowrap;
+  }
+
+  .slider {
+    min-height: 1.25em;
   }
 
   .hf-subtitle {
-    margin: 20px auto;
+    margin: 32px auto 36px;
     font-size: 0.9rem;
     line-height: 1.45;
     padding: 0 16px;
@@ -191,12 +196,46 @@ body:has(.page-fit-viewport) {
     margin: 0 auto;
     padding: 0 16px;
     box-sizing: border-box;
-    gap: 12px;
+    gap: 14px;
   }
 
   .hf-btn {
     width: 100%;
     min-width: 0;
     padding: 14px 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  body:has(.home-page) {
+    --hf-header-height: 58px;
+    --hf-home-footer-height: 62px;
+    min-height: 100svh;
+    height: auto;
+    max-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .home-page.page-fit-viewport {
+    flex: 0 0 auto;
+    min-height: calc(100vh - var(--hf-header-height) - var(--hf-home-footer-height));
+    min-height: calc(100svh - var(--hf-header-height) - var(--hf-home-footer-height));
+    overflow: visible;
+  }
+
+  .home-page.page-fit-viewport .hf-hero-wrapper {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    justify-content: stretch;
+    justify-items: center;
+    row-gap: clamp(44px, 8svh, 72px);
+    padding: clamp(20px, 4svh, 36px) 0;
+    overflow: visible;
+  }
+
+  .home-page .hf-subtitle {
+    margin: 0 auto;
   }
 }
