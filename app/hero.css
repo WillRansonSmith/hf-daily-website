@@ -219,7 +219,9 @@ body:has(.page-fit-viewport) {
   }
 }
 
-@media (max-width: 600px) {
+/* Phone portrait + phone landscape (width often >600 in landscape, e.g. 844×390). */
+@media (max-width: 600px),
+  (max-height: 500px) and (max-width: 1024px) and (orientation: landscape) {
   body:has(.home-page) {
     --hf-header-height: 58px;
     --hf-home-footer-height: 62px;
@@ -250,6 +252,37 @@ body:has(.page-fit-viewport) {
 
   .home-page .hf-subtitle {
     margin: 0 auto;
+  }
+}
+
+@media (max-height: 500px) and (max-width: 1024px) and (orientation: landscape) {
+  .home-page.page-fit-viewport .hf-hero-wrapper {
+    row-gap: clamp(16px, 6svh, 28px);
+    padding: clamp(8px, 3svh, 16px) 0;
+  }
+
+  .page-fit-viewport .hf-hero-wrapper {
+    padding-top: 0;
+  }
+}
+
+/*
+ * Unlock home fit-viewport on tablet landscape only (e.g. iPad Mini ~1133×744).
+ * Do NOT use bare max-height:900 — many laptops are 768–900px tall and must keep
+ * the locked fit-viewport desktop layout.
+ */
+@media (max-height: 900px) and (orientation: landscape) and (max-width: 1200px) {
+  body:has(.home-page) {
+    height: auto;
+    max-height: none;
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .home-page.page-fit-viewport {
+    flex: 0 0 auto;
+    overflow: visible;
   }
 }
 

@@ -168,10 +168,20 @@ body:has(.about-page) .hf-footer {
   }
 }
 
-@media (max-width: 768px) {
-  .about-page {
+/*
+ * Stacked + scrollable:
+ * - phones / narrow widths
+ * - iPad portrait (width can be >768 but orientation is portrait)
+ * - phone landscape (width often >768, e.g. 844×390 — without this, page-fit
+ *   locks body to 100dvh + overflow:hidden and content is cut off)
+ */
+@media (max-width: 768px),
+  (max-width: 1024px) and (orientation: portrait),
+  (max-height: 500px) and (max-width: 1024px) {
+  .about-page.page-fit-viewport {
     height: auto;
-    min-height: calc(100dvh - var(--hf-header-height, 52px));
+    min-height: 0;
+    flex: none;
     overflow: visible;
   }
 
@@ -183,6 +193,8 @@ body:has(.about-page) .hf-footer {
   }
 
   .how-it-works {
+    height: auto;
+    flex: none;
     padding: 20px 16px max(24px, env(safe-area-inset-bottom));
     align-items: flex-start;
   }
@@ -214,9 +226,10 @@ body:has(.about-page) .hf-footer {
   }
 
   .how-screenshot-image {
-    /* Width-driven on mobile so the mockup is readable without overflowing. */
+    /* Width-driven on mobile/tablet portrait so the mockup is readable. */
     height: auto;
     width: min(82vw, 312px);
+    transform: none;
   }
 
   .step-card {
@@ -255,7 +268,33 @@ body:has(.about-page) .hf-footer {
   }
 }
 
-@media (max-height: 720px) and (min-width: 769px) {
+/* Larger mockup on tablet portrait so the page scrolls like phones (less empty teal). */
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+  .how-screenshot-image {
+    width: min(52vw, 380px);
+  }
+
+  .how-heading {
+    font-size: clamp(1.85rem, 3.2vw, 2.25rem);
+  }
+
+  .step-card {
+    padding: 12px 16px;
+  }
+
+  .step-title {
+    font-size: 1rem;
+  }
+
+  .step-body {
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+}
+
+/* Compact desktop / landscape-tablet only — not iPad portrait (uses stacked layout). */
+@media (max-height: 720px) and (min-width: 769px) and (orientation: landscape),
+  (max-height: 720px) and (min-width: 1025px) {
   .how-heading {
     font-size: clamp(1.35rem, 2.4vw, 1.7rem);
   }
@@ -290,7 +329,8 @@ body:has(.about-page) .hf-footer {
   }
 }
 
-@media (max-height: 620px) and (min-width: 769px) {
+@media (max-height: 620px) and (min-width: 769px) and (orientation: landscape),
+  (max-height: 620px) and (min-width: 1025px) {
   .how-it-works {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -317,9 +357,77 @@ body:has(.about-page) .hf-footer {
   }
 }
 
-@media (max-width: 768px) and (max-height: 720px) {
+@media (max-width: 768px) and (max-height: 720px),
+  (max-width: 1024px) and (orientation: portrait) and (max-height: 720px),
+  (max-height: 500px) and (max-width: 1024px) {
   .how-main-row {
     row-gap: 14px;
   }
+}
 
+/* Phone landscape: keep the stacked scroll layout compact so less wasteful height. */
+@media (max-height: 500px) and (max-width: 1024px) and (orientation: landscape) {
+  .how-it-works {
+    padding: 12px 16px max(16px, env(safe-area-inset-bottom));
+  }
+
+  .how-heading {
+    font-size: 1.45rem;
+  }
+
+  .step-list {
+    gap: 10px;
+  }
+
+  .how-screenshot-image {
+    width: min(36vw, 220px);
+  }
+
+  .how-disclaimer {
+    margin-top: 12px;
+    padding-top: 6px;
+  }
+}
+
+/*
+ * Unlock about fit-viewport on tablet landscape only (e.g. iPad Mini ~1133×744).
+ * Bare max-height:900 would incorrectly unlock short laptop/desktop windows.
+ */
+@media (max-height: 900px) and (orientation: landscape) and (max-width: 1200px) {
+  body:has(.about-page) {
+    height: auto;
+    max-height: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .about-page.page-fit-viewport {
+    height: auto;
+    min-height: 0;
+    flex: none;
+    overflow: visible;
+  }
+
+  .how-it-works {
+    height: auto;
+    flex: none;
+  }
+}
+
+/* Tablet landscape two-column: size mockup by width so disclaimer isn't clipped. */
+@media (max-height: 900px) and (orientation: landscape) and (max-width: 1200px) and (min-width: 769px) {
+  .how-screenshot {
+    align-self: start;
+  }
+
+  .how-screenshot-image {
+    height: auto;
+    width: min(100%, 280px);
+    max-height: min(70vh, 520px);
+    transform: none;
+  }
+
+  .how-disclaimer {
+    margin-top: 16px;
+  }
 }
