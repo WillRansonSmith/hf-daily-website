@@ -3,11 +3,9 @@
 import { useEffect, useRef } from "react";
 
 const phrases = [
-  "One simple routine.",
   "Track symptoms.",
-  "Understand patterns.",
-  "Know when to speak up.",
-  "Take ownership.",
+  "Notice changes.",
+  "Speak up sooner.",
 ];
 
 export default function Hero() {
@@ -47,7 +45,9 @@ export default function Hero() {
   return (
     <div className="hf-hero-wrapper">
       <div className="hf-hero">
-        <span className="static">Your daily heart failure check-in.</span>
+        <span className="static">
+          A daily check-in app for heart failure patients.
+        </span>
         <span className="slider">
           <span ref={textRef} id="animatedText">
             {phrases[0]}
