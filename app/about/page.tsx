@@ -51,7 +51,7 @@ export default function AboutPage() {
                 alt="HF Daily app screenshot"
                 width={1132}
                 height={1762}
-                sizes="(max-height: 500px) and (max-width: 1024px) 36vw, (max-width: 768px) 82vw, (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) 52vw, (max-width: 900px) 280px, 432px"
+                sizes="(max-height: 500px) and (max-width: 1024px) 36vw, (max-height: 900px) and (min-height: 501px) and (orientation: landscape) and (max-width: 1200px) 38vw, (max-width: 768px) 82vw, (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) 52vw, (max-width: 900px) 280px, 432px"
                 className="how-screenshot-image"
                 loading="eager"
                 unoptimized

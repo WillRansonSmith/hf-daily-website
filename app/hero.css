@@ -173,8 +173,8 @@ body:has(.page-fit-viewport) {
   }
 }
 
-@media (max-width: 768px) {
-  /* Mobile hero stays vertically centered (no extra downward bias). */
+@media (max-width: 600px) {
+  /* Phone-only: stacked CTAs and tighter type (not iPad Mini at ~744px). */
   .page-fit-viewport .hf-hero-wrapper {
     padding-top: 0;
   }
@@ -270,22 +270,65 @@ body:has(.page-fit-viewport) {
  * Unlock home fit-viewport on tablet landscape only (e.g. iPad Mini ~1133×744).
  * Do NOT use bare max-height:900 — many laptops are 768–900px tall and must keep
  * the locked fit-viewport desktop layout.
+ *
+ * Keep a full-height shell (min-height) so the footer stays at the bottom instead of
+ * floating mid-screen when flex is released from page-fit-viewport.
  */
 @media (max-height: 900px) and (orientation: landscape) and (max-width: 1200px) {
   body:has(.home-page) {
-    height: auto;
-    max-height: none;
-    min-height: 100svh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .home-page.page-fit-viewport {
-    flex: 0 0 auto;
-    overflow: visible;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .home-page.page-fit-viewport .hf-hero-wrapper {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    justify-content: stretch;
+    justify-items: center;
+    row-gap: clamp(16px, 3.5vh, 28px);
+    padding: clamp(8px, 2vh, 16px) 0;
+    padding-top: 0;
+  }
+
+  .home-page .hf-hero {
+    font-size: clamp(2rem, 4.2vw, 2.85rem);
+  }
+
+  .home-page #animatedText {
+    font-size: clamp(1.85rem, 3.8vw, 2.55rem);
+  }
+
+  .home-page .hf-subtitle {
+    margin: 0 auto;
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    line-height: 1.45;
+    max-width: 44rem;
+  }
+
+  .home-page .hf-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    max-width: none;
+    gap: 14px;
+  }
+
+  .home-page .hf-btn {
+    width: auto;
+    min-width: 160px;
   }
 }
 
+/* Tablet portrait / mid widths: balanced hero grid (not phone stacked CTAs). */
 @media (min-width: 601px) and (max-width: 1099px) and (min-height: 700px) {
   .home-page.page-fit-viewport .hf-hero-wrapper {
     display: grid;
@@ -293,20 +336,31 @@ body:has(.page-fit-viewport) {
     align-content: center;
     justify-content: stretch;
     justify-items: center;
-    row-gap: clamp(44px, 6svh, 72px);
-    padding: clamp(24px, 5svh, 56px) 0;
+    row-gap: clamp(28px, 4.5svh, 48px);
+    padding: clamp(20px, 3.5svh, 40px) 0;
   }
 
   .home-page .hf-subtitle {
     margin: 0 auto;
   }
+
+  .home-page .hf-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    max-width: none;
+  }
+
+  .home-page .hf-btn {
+    width: auto;
+    min-width: 160px;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1099px) and (orientation: portrait) and (min-height: 900px) {
   .home-page.page-fit-viewport .hf-hero-wrapper {
-    /* Let the three hero groups occupy more of a tall tablet viewport without
-       introducing uncapped space-between gaps on unusually tall screens. */
-    row-gap: clamp(84px, 10svh, 136px);
-    padding-block: clamp(32px, 5svh, 64px);
+    /* Moderate gaps on tall tablets — avoid the previous uncapped empty bands. */
+    row-gap: clamp(36px, 5.5svh, 64px);
+    padding-block: clamp(24px, 4svh, 48px);
   }
 }

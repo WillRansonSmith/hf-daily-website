@@ -414,16 +414,18 @@ body:has(.about-page) .hf-footer {
   }
 }
 
-/* Tablet landscape two-column: size mockup by width so disclaimer isn't clipped. */
-@media (max-height: 900px) and (orientation: landscape) and (max-width: 1200px) and (min-width: 769px) {
+/* Tablet landscape two-column: larger readable mockup; page still scrolls.
+ * min-height:501px keeps phone landscape on the compact stacked mockup rule. */
+@media (max-height: 900px) and (min-height: 501px) and (orientation: landscape) and (max-width: 1200px) and (min-width: 769px) {
   .how-screenshot {
     align-self: start;
   }
 
   .how-screenshot-image {
     height: auto;
-    width: min(100%, 280px);
-    max-height: min(70vh, 520px);
+    /* Was capped at 280px; size closer to the step stack height on Mini/Air. */
+    width: min(38vw, 400px);
+    max-height: min(78vh, 600px);
     transform: none;
   }
 
