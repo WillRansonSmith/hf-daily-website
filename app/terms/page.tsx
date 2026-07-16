@@ -14,7 +14,7 @@ export default function TermsPage() {
         <h1>Terms of Use</h1>
 
         <p className="legal-meta">
-          {`HF Daily, Inc.\nEffective date: July 6, 2026`}
+          {`HF Daily, Inc.\nEffective date: July 6, 2026\nLast revised: July 16, 2026`}
         </p>
 
         <section className="legal-section">
@@ -47,12 +47,18 @@ export default function TermsPage() {
             The App is designed to help you keep track of your own information
             and support conversations with your own care team. The App does not
             currently use accounts, logins, or passwords, and there are no
-            payments or subscriptions. Information you enter in the App is
-            stored locally on your device. HF Daily does not currently receive,
-            access, transmit, or remotely store that information unless you
-            choose to send it to us, for example in a screenshot, email,
-            recording, or support message. Device or operating-system backups may
-            operate according to your device settings, as described in our{" "}
+            payments or subscriptions. The health entries you type into the App,
+            such as symptom responses, weight and blood pressure values, and
+            care-team contact details, are stored locally on your device. HF
+            Daily does not receive or remotely store those entries unless you
+            choose to send them to us, for example in a screenshot, email,
+            recording, or support message. The App does send HF Daily limited app
+            usage and technical information, such as whether the App is opened,
+            whether check-ins are started or completed, app version and
+            platform, and restricted technical error labels, as described in our{" "}
+            <Link href="/privacy">Privacy Policy</Link>. Device or
+            operating-system backups may operate according to your device
+            settings, as described in our{" "}
             <Link href="/privacy">Privacy Policy</Link>.
           </p>
         </section>
@@ -69,8 +75,11 @@ export default function TermsPage() {
           </p>
           <p>
             No clinician or HF Daily personnel routinely monitors your entries
-            through the App. The App does not automatically contact your doctor,
-            nurse, caregiver, emergency services, or anyone else.
+            through the App. HF Daily&apos;s collection of limited app analytics or
+            event data does not mean that HF Daily or any clinician monitors your
+            health or reviews your check-ins. The App does not automatically
+            contact your doctor, nurse, caregiver, emergency services, or anyone
+            else.
           </p>
           <p>
             The App&apos;s results are based only on the information you enter
@@ -231,9 +240,10 @@ export default function TermsPage() {
             delayed, or missing results; errors or omissions in information you
             enter; any failure of the App to identify potential deterioration;
             any failure to contact a healthcare provider or emergency services;
-            data loss; device issues; service interruptions; unauthorized access
-            not caused by HF Daily&apos;s own misconduct; support
-            communications; and third-party services.
+            data loss; device issues; service interruptions or failures of our
+            backend or analytics systems; unauthorized access not caused by HF
+            Daily&apos;s own misconduct; support communications; and third-party
+            services.
           </p>
           <p>
             TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, HF DAILY&apos;S
@@ -293,7 +303,7 @@ export default function TermsPage() {
           <p>
             HF Daily may update these Terms from time to time, for example to
             reflect changes to the Services, our practices, or the law. When we
-            update these Terms, we will update the effective date at the top. For
+            update these Terms, we will update the revision date at the top. For
             material changes, we will provide notice through the App, the
             Website, or by email where appropriate. If you continue to use the
             Services after updated Terms take effect and after we have provided
