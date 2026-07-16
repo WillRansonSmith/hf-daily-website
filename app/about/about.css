@@ -159,7 +159,7 @@ body:has(.about-page) .hf-footer {
 
 @media (min-width: 1100px) {
   .how-screenshot-image {
-    transform: translateY(-16px) scale(1.2);
+    transform: translateY(-16px) scale(1.14);
     transform-origin: center;
   }
 
@@ -357,7 +357,7 @@ body:has(.about-page) .hf-footer {
     height: min(70vh, 646px);
     width: auto;
     max-width: none;
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.14);
     transform-origin: center;
   }
 }
@@ -401,7 +401,7 @@ body:has(.about-page) .hf-footer {
   .how-screenshot-image {
     height: min(60vh, 460px);
     width: auto;
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.14);
   }
 
   .how-disclaimer-lead {
