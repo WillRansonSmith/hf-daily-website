@@ -18,10 +18,11 @@ body:has(.about-page) .hf-footer {
 }
 
 .how-it-works {
+  --how-top-padding: clamp(24px, 4vh, 36px);
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: clamp(24px, 4vh, 36px) 24px 20px;
+  padding: var(--how-top-padding) 24px 20px;
   box-sizing: border-box;
   flex: 1;
   height: 100%;
@@ -158,11 +159,6 @@ body:has(.about-page) .hf-footer {
 }
 
 @media (min-width: 1100px) {
-  .how-screenshot-image {
-    transform: translateY(-16px) scale(1.14);
-    transform-origin: center;
-  }
-
   .how-disclaimer {
     margin-top: 40px;
   }
@@ -350,21 +346,31 @@ body:has(.about-page) .hf-footer {
   }
 
   .how-screenshot-image {
+    --mockup-height: min(79.8vh, 736.44px);
+    --mockup-half-height: min(39.9vh, 368.22px);
     position: absolute;
     left: 50%;
-    top: calc(50% + 8px);
+    top: clamp(
+      calc(var(--mockup-half-height) - var(--how-top-padding) + 12px),
+      calc(50% + 8px),
+      calc(
+        100dvh - var(--hf-header-height) - var(--how-top-padding) -
+          var(--mockup-half-height) - 12px
+      )
+    );
     bottom: auto;
-    height: min(70vh, 646px);
+    height: var(--mockup-height);
     width: auto;
     max-width: none;
-    transform: translate(-50%, -50%) scale(1.14);
+    transform: translate(-50%, -50%);
     transform-origin: center;
   }
 }
 
 @media (max-height: 820px) and (min-width: 1201px) {
   .how-it-works {
-    padding-top: clamp(40px, 6vh, 52px);
+    --how-top-padding: clamp(40px, 6vh, 52px);
+    padding-top: var(--how-top-padding);
   }
 
   .how-heading {
@@ -399,9 +405,11 @@ body:has(.about-page) .hf-footer {
   }
 
   .how-screenshot-image {
-    height: min(60vh, 460px);
+    --mockup-height: min(68.4vh, 524.4px);
+    --mockup-half-height: min(34.2vh, 262.2px);
+    height: var(--mockup-height);
     width: auto;
-    transform: translate(-50%, -50%) scale(1.14);
+    transform: translate(-50%, -50%);
   }
 
   .how-disclaimer-lead {
