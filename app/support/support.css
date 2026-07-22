@@ -1,9 +1,10 @@
-.support-document > h1 {
-  margin-bottom: 36px;
+.support-heading {
+  margin-bottom: 18px !important;
+  font-size: 1.25rem !important;
 }
 
 .support-document .legal-section {
-  margin-bottom: 44px;
+  margin-bottom: 36px;
 }
 
 .support-document .legal-section h2 {
@@ -19,11 +20,48 @@
 }
 
 @media (max-width: 768px) {
-  .support-document > h1 {
-    margin-bottom: 30px;
+  .support-document .legal-section {
+    margin-bottom: 38px;
+  }
+}
+
+@media (min-width: 769px) and (min-height: 700px) {
+  body:has(.support-page) {
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .support-page {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .support-document {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   .support-document .legal-section {
-    margin-bottom: 38px;
+    margin-bottom: 28px;
+  }
+
+  .support-document .legal-section:last-child {
+    margin-bottom: 0;
+  }
+
+  body:has(.support-page) .hf-footer {
+    padding: 14px 24px 18px;
+  }
+
+  body:has(.support-page) .hf-footer-inner {
+    flex-direction: row;
+    justify-content: center;
+    gap: 18px;
   }
 }

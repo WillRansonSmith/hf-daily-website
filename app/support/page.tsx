@@ -10,12 +10,10 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <main className="legal-page">
+    <main className="legal-page support-page">
       <article className="legal-document support-document">
-        <h1>Support</h1>
-
         <section className="legal-section">
-          <h2>Need help with HF Daily?</h2>
+          <h1 className="support-heading">Need help with HF Daily?</h1>
           <p>
             HF Daily is an early-stage app. If you have questions, feedback, or
             need help using the app, please contact us.
