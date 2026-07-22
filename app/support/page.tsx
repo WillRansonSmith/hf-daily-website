@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "../legal.css";
+import "./support.css";
 
 export const metadata: Metadata = {
   title: "Support | HF Daily",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <main className="legal-page">
-      <article className="legal-document">
+      <article className="legal-document support-document">
         <h1>Support</h1>
 
         <section className="legal-section">

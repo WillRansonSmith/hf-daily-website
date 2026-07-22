@@ -1,0 +1,29 @@
+.support-document > h1 {
+  margin-bottom: 36px;
+}
+
+.support-document .legal-section {
+  margin-bottom: 44px;
+}
+
+.support-document .legal-section h2 {
+  margin-bottom: 18px;
+}
+
+.support-document .legal-section p {
+  margin-bottom: 20px;
+}
+
+.support-document .legal-section p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .support-document > h1 {
+    margin-bottom: 30px;
+  }
+
+  .support-document .legal-section {
+    margin-bottom: 38px;
+  }
+}
